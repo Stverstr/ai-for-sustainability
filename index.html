@@ -72,8 +72,12 @@ section{position:relative}
 .hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:120px;padding-bottom:80px}
 .hero-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;pointer-events:none}
 .hero .container{position:relative;z-index:2}
-.hero h1{font-size:clamp(44px,6.6vw,88px);line-height:1.02;color:var(--cream);max-width:920px}
-.hero .lede{margin-top:28px;max-width:560px}
+.hero h1{font-size:clamp(44px,6.6vw,84px);line-height:1.02;color:var(--cream);max-width:640px}
+.hero .lede{margin-top:28px;max-width:460px}
+.hero-art{position:absolute;right:-30px;top:50%;transform:translateY(-50%);width:440px;opacity:.9;z-index:1}
+@media(max-width:1150px){.hero-art{width:320px;right:-60px}}
+@media(max-width:900px){.hero-art{display:none}}
+.wave-divider{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px;z-index:2;display:block}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:44px}
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-body);font-weight:700;font-size:15px;padding:15px 28px;border-radius:100px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
 .btn:hover{transform:translateY(-2px)}
@@ -101,13 +105,27 @@ section{position:relative}
 .stat .label{margin-top:10px;font-size:14px;color:var(--ink-soft);max-width:220px}
 @media(max-width:800px){.stat-row{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line-light);padding-bottom:24px;margin-bottom:24px}}
 
+/* -------- flow diagram -------- */
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:52px}
+.flow-node{display:flex;flex-direction:column;align-items:center;gap:10px;width:92px}
+.flow-icon{width:56px;height:56px;border-radius:16px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center}
+.flow-icon svg{width:24px;height:24px}
+.flow-node span{font-size:12px;font-weight:700;color:var(--ink-soft);text-align:center}
+.flow-arrow{color:var(--sage-dim);width:26px;height:16px;flex:none}
+.flow-ai-tag{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:10px 18px;border-radius:100px;background:rgba(169,217,74,.16);color:#557236;font-weight:700;font-size:13px}
+.flow-ai-tag svg{width:14px;height:14px}
+@media(max-width:600px){.flow{gap:6px}.flow-node{width:74px}.flow-icon{width:46px;height:46px}}
+
 /* -------- use case rows -------- */
-.usecase{display:grid;grid-template-columns:220px 1fr;gap:56px;padding:64px 0;border-top:1px solid var(--line-dark);align-items:start}
+.usecase{display:grid;grid-template-columns:220px 1fr;gap:56px;padding:56px 0;border-top:1px solid var(--line-dark);align-items:start}
 .usecase:last-of-type{border-bottom:1px solid var(--line-dark)}
-.usecase .num{font-family:var(--font-display);font-size:120px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--gold);font-weight:440}
-.usecase-body h3{font-size:clamp(26px,3vw,36px);color:var(--cream)}
-.usecase-body .kicker{margin-bottom:14px}
-.usecase-body p{color:var(--sage);font-size:16.5px;line-height:1.7;max-width:640px;margin-top:18px}
+.usecase .num{font-family:var(--font-display);font-size:110px;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--gold);font-weight:440}
+.usecase-body{display:flex;flex-direction:column}
+.usecase-body h3{font-size:clamp(24px,2.8vw,32px);color:var(--cream);margin-top:14px}
+.usecase-kicker{display:flex;align-items:center;gap:12px}
+.use-icon{width:36px;height:36px;border-radius:10px;background:rgba(205,250,94,.13);color:var(--lime);display:flex;align-items:center;justify-content:center;flex:none}
+.use-icon svg{width:19px;height:19px}
+.usecase-body p{color:var(--sage);font-size:15.5px;line-height:1.65;max-width:520px;margin-top:14px}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.04em;padding:8px 16px;border-radius:100px;margin-top:24px}
 .tag--yes{background:rgba(205,250,94,.12);color:var(--lime);border:1px solid rgba(205,250,94,.3)}
 .tag--no{background:rgba(226,115,79,.12);color:var(--terracotta);border:1px solid rgba(226,115,79,.3)}
@@ -118,24 +136,26 @@ section{position:relative}
 .split-col h4{font-family:var(--font-body);font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
 .split-col.yes h4{color:#5c7d3c}
 .split-col.no h4{color:var(--terracotta)}
-.guard-item{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line-light)}
-.guard-item .dot{width:8px;height:8px;border-radius:50%;margin-top:8px;flex:none}
-.split-col.yes .dot{background:var(--lime-dim)}
-.split-col.no .dot{background:var(--terracotta)}
-.guard-item strong{display:block;font-size:16px;margin-bottom:4px}
-.guard-item span{font-size:14.5px;color:var(--ink-soft)}
+.guard-item{display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line-light);align-items:center}
+.guard-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.guard-icon svg{width:19px;height:19px}
+.split-col.yes .guard-icon{background:rgba(169,217,74,.16);color:#5c7d3c}
+.split-col.no .guard-icon{background:rgba(226,115,79,.16);color:var(--terracotta)}
+.guard-item strong{display:block;font-size:15.5px;margin-bottom:2px}
+.guard-item span{font-size:13.5px;color:var(--ink-soft)}
 @media(max-width:760px){.split{grid-template-columns:1fr;gap:8px}}
 .notice{margin-top:48px;padding:24px 28px;border-radius:14px;background:var(--ink);color:var(--cream);font-size:15px;line-height:1.6;display:flex;gap:16px;align-items:flex-start}
 .notice svg{flex:none;margin-top:2px;color:var(--gold)}
 
 /* -------- questions -------- */
-.qa{border-top:1px solid var(--line-dark)}
-.qa:last-child{border-bottom:1px solid var(--line-dark)}
-.qa-row{display:grid;grid-template-columns:90px 1fr;gap:32px;padding:48px 0}
-.qa-row .qn{font-family:var(--font-display);font-size:20px;color:var(--gold)}
-.qa-row h3{font-size:clamp(24px,3vw,32px);color:var(--cream);max-width:600px}
-.qa-row p{color:var(--sage);margin-top:14px;max-width:620px;font-size:16px;line-height:1.7}
-@media(max-width:760px){.qa-row{grid-template-columns:1fr;gap:10px}}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.qcard{background:var(--deep-2);border:1px solid var(--line-dark);border-radius:20px;padding:32px}
+.qcard .q-icon{width:44px;height:44px;border-radius:12px;background:rgba(205,250,94,.13);color:var(--lime);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+.qcard .q-icon svg{width:22px;height:22px}
+.qcard .qn{font-family:var(--font-display);font-size:13px;color:var(--gold);margin-bottom:8px}
+.qcard h3{font-size:22px;color:var(--cream)}
+.qcard p{color:var(--sage);font-size:14px;line-height:1.6;margin-top:12px}
+@media(max-width:800px){.grid-3{grid-template-columns:1fr}}
 
 /* -------- timeline -------- */
 .timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:70px}
@@ -209,30 +229,50 @@ footer a:hover{color:var(--cream)}
   <section class="hero band-dark">
     <div class="hero-blob" style="width:560px;height:560px;background:var(--lime);top:-160px;right:-120px"></div>
     <div class="hero-blob" style="width:420px;height:420px;background:var(--gold);bottom:-140px;left:-100px;opacity:.18"></div>
+    <svg class="hero-art" viewBox="0 0 400 400" fill="none">
+      <circle cx="200" cy="200" r="170" stroke="var(--line-dark)"/>
+      <circle cx="200" cy="200" r="120" stroke="var(--line-dark)"/>
+      <path d="M200 335c-64-16-108-72-108-145 0-70 47-113 108-129 61 16 108 59 108 129 0 73-44 129-108 145z" stroke="var(--lime)" stroke-width="1.6" opacity=".85"/>
+      <path d="M200 335V95" stroke="var(--lime)" stroke-width="1.2" opacity=".5"/>
+      <circle cx="200" cy="200" r="5" fill="var(--lime)"/>
+      <circle cx="333" cy="118" r="3.5" fill="var(--gold)"/>
+      <circle cx="66" cy="278" r="3.5" fill="var(--gold)"/>
+      <circle cx="300" cy="300" r="3" fill="var(--sage)"/>
+    </svg>
     <div class="container">
       <p class="eyebrow reveal">Voorstel · Sustainability team → AI Support Group</p>
-      <h1 class="reveal" style="transition-delay:.08s">Wat als onze data <span class="italic" style="color:var(--lime)">zelf</span> haar impact kon vertellen?</h1>
-      <p class="lede reveal" style="transition-delay:.16s">Claude AI inzetten binnen Sustainability: productdata verrijken voor impactanalyses, de Board-applicatie sneller bouwen, en analisten AI-gedreven inzichten geven op Snowflake-data. Eén proeftuin, drie concrete cases, heldere guardrails.</p>
+      <h1 class="reveal" style="transition-delay:.08s">Data die <span class="italic" style="color:var(--lime)">zelf</span> haar impact vertelt.</h1>
+      <p class="lede reveal" style="transition-delay:.16s">Claude AI voor Sustainability: 3 concrete cases, heldere guardrails.</p>
       <div class="hero-cta reveal" style="transition-delay:.24s">
         <a href="#vragen" class="btn btn--lime">Bekijk onze vraag</a>
-        <a href="#usecases" class="btn btn--ghost-dark">Ontdek de 3 use cases</a>
+        <a href="#usecases" class="btn btn--ghost-dark">De 3 use cases</a>
       </div>
     </div>
     <div class="scroll-cue"><span class="line"></span>Scroll</div>
+    <svg class="wave-divider" viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0 40 C 240 90 480 0 720 30 C 960 60 1200 10 1440 40 L1440 80 L0 80 Z" fill="var(--cream)"/></svg>
   </section>
 
   <!-- CONTEXT -->
-  <section class="section band-cream">
+  <section class="section band-cream" style="padding-top:90px">
     <div class="container">
       <p class="eyebrow reveal">Waarom nu</p>
-      <h2 class="reveal" style="font-size:clamp(28px,3.6vw,42px);max-width:820px;margin-top:16px">Drie werkvelden lopen tegen dezelfde muur aan: te veel ruwe data, te weinig tijd, te veel handmatig structureringswerk vóór er één inzicht uitkomt.</h2>
-      <p class="lede reveal" style="margin-top:32px;max-width:var(--measure)">We verzamelen, structureren en analyseren vandaag al sustainability-data over klimaat, water en mensenrechten — via Board voor de consolidatie en Snowflake/Power BI voor de analyse. Dat werkt, maar kost tijd die we liever aan impact besteden dan aan datastructurering. Tegelijk ontbreekt voor een correcte impactanalyse (CO2, water, mensenrechten) vandaag een groot deel van de brondata: ingrediënten, land van oorsprong, emissie- en waterverbruiksfactoren zijn onvolledig of nergens gestructureerd beschikbaar.</p>
-      <p class="lede reveal" style="margin-top:20px;max-width:var(--measure)">Sustainability is bewust een goede plek om dit eerst uit te proberen: een klein, samenhangend team, geen klant- of verkoopsdata in de kernprocessen, een duidelijk afgebakende scope. Een ideale proeftuin, vóór bredere uitrol binnen Colruyt Group.</p>
+      <h2 class="reveal" style="font-size:clamp(26px,3.2vw,38px);max-width:760px;margin-top:16px">Veel ruwe data, weinig tijd, een trage vertaalslag naar inzicht.</h2>
+
+      <div class="flow reveal">
+        <div class="flow-node"><div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M20 12c0 1.66-3.58 3-8 3s-8-1.34-8-3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/></svg></div><span>Ruwe data</span></div>
+        <svg class="flow-arrow" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="14 1 20 6 14 11"/></svg>
+        <div class="flow-node"><div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><span>Board</span></div>
+        <svg class="flow-arrow" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="14 1 20 6 14 11"/></svg>
+        <div class="flow-node"><div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 1 1 .7-7.94A5.5 5.5 0 0 1 18 12.5 3.5 3.5 0 0 1 17.5 18H7z"/></svg></div><span>Snowflake</span></div>
+        <svg class="flow-arrow" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="0" y1="6" x2="20" y2="6"/><polyline points="14 1 20 6 14 11"/></svg>
+        <div class="flow-node"><div class="flow-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><span>Power BI</span></div>
+      </div>
+      <div class="flow-ai-tag reveal"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg> Claude versnelt elke stap</div>
 
       <div class="stat-row">
-        <div class="stat reveal"><div class="num">03</div><div class="label">concrete use cases, geen abstract experiment</div></div>
-        <div class="stat reveal" style="transition-delay:.08s"><div class="num">0</div><div class="label">verkoops-, volume- of klantdata in scope</div></div>
-        <div class="stat reveal" style="transition-delay:.16s"><div class="num">01</div><div class="label">team als proeftuin voor Colruyt Group</div></div>
+        <div class="stat reveal"><div class="num">03</div><div class="label">concrete use cases</div></div>
+        <div class="stat reveal" style="transition-delay:.08s"><div class="num">0</div><div class="label">verkoops- of klantdata in scope</div></div>
+        <div class="stat reveal" style="transition-delay:.16s"><div class="num">01</div><div class="label">team als proeftuin</div></div>
       </div>
     </div>
   </section>
@@ -246,30 +286,39 @@ footer a:hover{color:var(--cream)}
       <div class="usecase reveal">
         <div class="num">01</div>
         <div class="usecase-body">
-          <p class="eyebrow kicker">Dataverrijking</p>
+          <div class="usecase-kicker">
+            <div class="use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M20 12c0 1.66-3.58 3-8 3s-8-1.34-8-3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/></svg></div>
+            <p class="eyebrow" style="margin:0">Dataverrijking</p>
+          </div>
           <h3>Impact meetbaar maken vóór we hem kunnen sturen</h3>
-          <p>Vandaag hebben we productdata van alle Colruyt Group-producten, maar te weinig om een volwaardige impactanalyse te maken: ingrediënten, land van oorsprong, CO2-emissiefactoren en waterverbruik ontbreken grotendeels. Claude kan deze productdata helpen aanvullen, zodat we minstens een <em>preliminary impact assessment</em> kunnen maken op klimaat, water en mensenrechten.</p>
-          <span class="tag tag--yes">Guardrail — enkel productdata, nooit verkoops- of volumedata</span>
+          <p>Ingrediënten, herkomst en CO2-/waterfactoren ontbreken vandaag. Claude vult productdata aan voor een eerste impact assessment op klimaat, water en mensenrechten.</p>
+          <span class="tag tag--yes">Guardrail — enkel productdata, nooit verkoopsdata</span>
         </div>
       </div>
 
       <div class="usecase reveal">
         <div class="num">02</div>
         <div class="usecase-body">
-          <p class="eyebrow kicker">Board — sneller bouwen</p>
+          <div class="usecase-kicker">
+            <div class="use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+            <p class="eyebrow" style="margin:0">Board — sneller bouwen</p>
+          </div>
           <h3>Meer tijd voor doelstellingen, minder voor low-code-werk</h3>
-          <p>We ontwikkelen vandaag onze Sustainability-consolidatieapplicatie in Board, een low-code omgeving. Met AI-ondersteuning bij het ontwikkelwerk zouden we sneller kunnen itereren. Geen bedrijfskritische applicatie voor 1000+ gebruikers of klanten — wél cruciaal voor het beheer van onze doelstellingen en de aggregatie/consolidatie van onze cijfers.</p>
-          <span class="tag tag--yes">Guardrail — beperkte interne ontwikkelgroep, geen bedrijfscijfers als context</span>
+          <p>We bouwen onze Sustainability-app in Board. AI-ondersteuning bij het ontwikkelwerk laat ons sneller itereren — klein team, geen bedrijfscijfers als context.</p>
+          <span class="tag tag--yes">Guardrail — beperkte interne ontwikkelgroep</span>
         </div>
       </div>
 
       <div class="usecase reveal">
         <div class="num">03</div>
         <div class="usecase-body">
-          <p class="eyebrow kicker">Analisten</p>
+          <div class="usecase-kicker">
+            <div class="use-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <p class="eyebrow" style="margin:0">Analisten</p>
+          </div>
           <h3>Van ruwe data naar inzicht, zonder de omweg</h3>
-          <p>Board verzamelt vandaag gestructureerd de data en processen die tot kwalitatieve cijfers leiden; die data gaat naar Snowflake, waar analisten met klassieke tools en Power BI inzichten bouwen per sustainability-thema (klimaat, mensenrechten, water). De vertaalslag naar semantische modellen kost vandaag veel tijd — AI kan op de ruwe data sneller en dieper inzichten vinden én sneller visualiseren.</p>
-          <span class="tag tag--yes">Guardrail — analyse binnen bestaande Snowflake-toegangsrechten, niets breder</span>
+          <p>Board structureert, Snowflake en Power BI leveren inzicht — met een trage vertaalslag ertussen. AI vindt sneller patronen en visualiseert ze meteen.</p>
+          <span class="tag tag--yes">Guardrail — binnen bestaande Snowflake-rechten</span>
         </div>
       </div>
     </div>
@@ -280,25 +329,24 @@ footer a:hover{color:var(--cream)}
     <div class="container">
       <p class="eyebrow reveal">Guardrails</p>
       <h2 class="reveal" style="font-size:clamp(28px,3.6vw,42px);margin-top:16px;max-width:680px">Wat delen we wel, wat nooit.</h2>
-      <p class="lede reveal" style="margin-top:20px;max-width:var(--measure)">Het uitgangspunt is eenvoudig: productdata mag gedeeld worden waar dat nodig is voor impactanalyse; alles wat herleidbaar is naar omzet, volumes of klanten blijft strikt buiten scope.</p>
 
       <div class="split">
         <div class="split-col yes reveal">
           <h4>Wel delen</h4>
-          <div class="guard-item"><span class="dot"></span><div><strong>Productdata</strong><span>Ingrediënten, samenstelling, verpakking, herkomst</span></div></div>
-          <div class="guard-item"><span class="dot"></span><div><strong>Referentiedata impact</strong><span>CO2-emissiefactoren, waterverbruiksfactoren per grondstof/regio</span></div></div>
-          <div class="guard-item"><span class="dot"></span><div><strong>Geaggregeerde sustainability-cijfers</strong><span>Klimaat-, water- en mensenrechten-KPI's binnen bestaande Snowflake-toegang</span></div></div>
+          <div class="guard-item"><div class="guard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 5.34 2 10a7 7 0 0 1-10 8z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div><div><strong>Productdata</strong><span>Ingrediënten, verpakking, herkomst</span></div></div>
+          <div class="guard-item"><div class="guard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/></svg></div><div><strong>Impactfactoren</strong><span>CO2- en waterverbruiksfactoren</span></div></div>
+          <div class="guard-item"><div class="guard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div><strong>Geaggregeerde cijfers</strong><span>Klimaat-, water-, mensenrechten-KPI's</span></div></div>
         </div>
         <div class="split-col no reveal" style="transition-delay:.1s">
           <h4>Nooit delen</h4>
-          <div class="guard-item"><span class="dot"></span><div><strong>Verkoops- en volumedata</strong><span>Omzet, aantal verkochte eenheden, prijzen</span></div></div>
-          <div class="guard-item"><span class="dot"></span><div><strong>Klant- en persoonsgegevens</strong><span>Klantprofielen, aankoopgedrag, loyaltydata</span></div></div>
+          <div class="guard-item"><div class="guard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="5.5" y1="5.5" x2="18.5" y2="18.5"/></svg></div><div><strong>Verkoops- &amp; volumedata</strong><span>Omzet, eenheden, prijzen</span></div></div>
+          <div class="guard-item"><div class="guard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8" cy="7" r="4"/><line x1="17" y1="8" x2="22" y2="13"/><line x1="22" y1="8" x2="17" y2="13"/></svg></div><div><strong>Klantgegevens</strong><span>Profielen, gedrag, loyalty</span></div></div>
         </div>
       </div>
 
       <div class="notice reveal">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5"/></svg>
-        <span>Alle data-uitwisseling verloopt via de door Colruyt Group goedgekeurde AI-omgeving en het bestaande contract met Anthropic — geen losse consumer-tools of persoonlijke accounts.</span>
+        <span>Via de goedgekeurde AI-omgeving en het bestaande Anthropic-contract — geen consumer-tools of persoonlijke accounts.</span>
       </div>
     </div>
   </section>
@@ -309,33 +357,24 @@ footer a:hover{color:var(--cream)}
       <p class="eyebrow reveal">Onze vraag aan de AI Support Group</p>
       <h2 class="reveal" style="color:var(--cream);font-size:clamp(28px,3.6vw,42px);margin-top:16px;max-width:640px">Geen kant-en-klaar platform — wel drie dingen scherp krijgen.</h2>
 
-      <div style="margin-top:48px">
-        <div class="qa">
-          <div class="qa-row reveal">
-            <div class="qn">01</div>
-            <div>
-              <h3>Kan dat?</h3>
-              <p>Is het technisch en beleidsmatig haalbaar om Claude in te zetten voor deze drie cases — datastructurering, Board-ontwikkeling en analyse op Snowflake — binnen het bestaande Colruyt Group AI-kader?</p>
-            </div>
-          </div>
+      <div class="grid-3">
+        <div class="qcard reveal">
+          <div class="q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 1 1 4.6 2.6c-1.2.7-1.7 1.4-1.7 2.4"/><line x1="12" y1="17.5" x2="12.01" y2="17.5"/></svg></div>
+          <p class="qn">Vraag 01</p>
+          <h3>Kan dat?</h3>
+          <p>Haalbaar binnen het bestaande AI-kader van Colruyt Group?</p>
         </div>
-        <div class="qa">
-          <div class="qa-row reveal">
-            <div class="qn">02</div>
-            <div>
-              <h3>Krijgen we toegang?</h3>
-              <p>Kunnen we, binnen de guardrails van deze drie topics en zonder gevoelige data, de nodige toegang krijgen voor het volledige Sustainability-team — niet voor één proefpersoon, maar voor het team dat er dagelijks mee werkt?</p>
-            </div>
-          </div>
+        <div class="qcard reveal" style="transition-delay:.06s">
+          <div class="q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.32-2.24"/></svg></div>
+          <p class="qn">Vraag 02</p>
+          <h3>Krijgen we toegang?</h3>
+          <p>Voor het volledige team, binnen de guardrails hierboven.</p>
         </div>
-        <div class="qa">
-          <div class="qa-row reveal">
-            <div class="qn">03</div>
-            <div>
-              <h3>Hoe werken we samen?</h3>
-              <p>Hoe organiseren we de samenwerking met de juiste mensen binnen AI Support, maar wel dicht bij het Sustainability-team — zodat we snel kunnen itereren zonder de governance uit het oog te verliezen?</p>
-            </div>
-          </div>
+        <div class="qcard reveal" style="transition-delay:.12s">
+          <div class="q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="8" r="4"/><path d="M23 20v-2a4 4 0 0 0-3-3.87"/><path d="M16 4.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <p class="qn">Vraag 03</p>
+          <h3>Hoe werken we samen?</h3>
+          <p>Met de juiste mensen bij AI Support, dicht bij ons team.</p>
         </div>
       </div>
     </div>
@@ -346,20 +385,19 @@ footer a:hover{color:var(--cream)}
     <div class="container">
       <p class="eyebrow reveal">Voorgestelde aanpak</p>
       <h2 class="reveal" style="font-size:clamp(28px,3.6vw,42px);margin-top:16px;max-width:680px">Een proeftuin, geen big bang.</h2>
-      <p class="lede reveal" style="margin-top:20px;max-width:var(--measure)">We stellen voor om dit klein en gecontroleerd te starten, met het Sustainability-team als piloot voor doorgedreven AI-werking binnen Colruyt Group — met AI Support als partner, niet als achteraf-goedkeurder.</p>
 
       <div class="timeline">
-        <div class="phase reveal"><div class="dot">1</div><h5>Scoping</h5><p>Guardrails en databronnen samen met AI Support fijnstellen per use case.</p></div>
-        <div class="phase reveal" style="transition-delay:.06s"><div class="dot">2</div><h5>Piloot</h5><p>Eén use case eerst — dataverrijking op een productcategorie — als bewijs van waarde.</p></div>
-        <div class="phase reveal" style="transition-delay:.12s"><div class="dot">3</div><h5>Evaluatie</h5><p>Resultaat, datakwaliteit en governance samen aftoetsen tegen de guardrails.</p></div>
-        <div class="phase reveal" style="transition-delay:.18s"><div class="dot">4</div><h5>Opschalen</h5><p>Uitbreiden naar Board en analisten, mogelijks als referentiecase voor andere teams.</p></div>
+        <div class="phase reveal"><div class="dot">1</div><h5>Scoping</h5><p>Guardrails en databronnen vastleggen.</p></div>
+        <div class="phase reveal" style="transition-delay:.06s"><div class="dot">2</div><h5>Piloot</h5><p>Eén use case als bewijs van waarde.</p></div>
+        <div class="phase reveal" style="transition-delay:.12s"><div class="dot">3</div><h5>Evaluatie</h5><p>Resultaat en governance samen aftoetsen.</p></div>
+        <div class="phase reveal" style="transition-delay:.18s"><div class="dot">4</div><h5>Opschalen</h5><p>Uitbreiden naar Board en analisten.</p></div>
       </div>
 
-      <h3 style="margin-top:80px;font-size:24px" class="reveal">Wie doet wat</h3>
+      <h3 style="margin-top:70px;font-size:22px" class="reveal">Wie doet wat</h3>
       <div class="roles">
-        <div class="role reveal"><h5>Sustainability team</h5><p>Eigenaar van de use cases, levert domeinkennis, test en valideert de resultaten in de praktijk.</p></div>
-        <div class="role reveal" style="transition-delay:.06s"><h5>AI Support Group</h5><p>Bewaakt het AI-kader, faciliteert toegang en tooling, denkt mee over schaalbaarheid buiten de piloot.</p></div>
-        <div class="role reveal" style="transition-delay:.12s"><h5>Data governance &amp; security</h5><p>Valideert de guardrails uit deze pagina en bevestigt dat geen gevoelige data de scope verlaat.</p></div>
+        <div class="role reveal"><h5>Sustainability team</h5><p>Eigenaar van de use cases en domeinkennis.</p></div>
+        <div class="role reveal" style="transition-delay:.06s"><h5>AI Support Group</h5><p>Bewaakt het kader, faciliteert toegang.</p></div>
+        <div class="role reveal" style="transition-delay:.12s"><h5>Data governance &amp; security</h5><p>Valideert de guardrails.</p></div>
       </div>
     </div>
   </section>
@@ -368,7 +406,7 @@ footer a:hover{color:var(--cream)}
   <section class="cta-band">
     <div class="container reveal">
       <h2>Laten we dit samen bekijken.</h2>
-      <p>We stellen een kort overleg voor met AI Support om deze drie vragen te bespreken en een eerste piloot af te bakenen.</p>
+      <p>Eén kort overleg, drie vragen beantwoord, één piloot afgebakend.</p>
       <a href="mailto:sustainability@colruytgroup.com?subject=AI%20for%20Sustainability%20-%20kick-off" class="btn btn--dark">Plan een kick-off</a>
     </div>
   </section>
