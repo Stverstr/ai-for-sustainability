@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI for Sustainability — voorstel voor de AI Support Group</title>
+<link rel="stylesheet" href="assets/colruyt.css">
+<style>
+  .icon-circle{width:56px;height:56px;border-radius:50%;background:var(--clr-orange-100);display:flex;align-items:center;justify-content:center;color:var(--clr-orange);flex:none}
+  .usecase-card{padding:30px;display:flex;flex-direction:column;gap:14px;height:100%}
+  .status-pill{display:inline-block;font-size:11px;font-weight:700;line-height:1;color:#fff;padding:5px 9px;border-radius:2px;white-space:nowrap}
+  .phase-card{padding:24px;height:100%}
+  .phase-num{font-family:var(--font-display);font-size:33px;color:var(--clr-orange);line-height:1;margin-bottom:8px}
+  .role-card{padding:24px;height:100%}
+  .anchor-offset{scroll-margin-top:96px}
+  @media(max-width:767.98px){.grid--3,.grid--4{grid-template-columns:1fr !important}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:#0f0f11;font-family:system-ui">
+  <div style="font-size:1.8rem;font-weight:800;color:#fff;margin-bottom:2rem">🌱 AI for Sustainability</div>
+  <div style="background:#1a1a1f;border:1px solid #2a2a32;border-radius:16px;padding:2.5rem;width:360px;text-align:center">
+    <h2 style="color:#fff;margin-bottom:1rem;font-family:system-ui">Beveiligde applicatie</h2>
+    <input type="password" id="pwInput" placeholder="Wachtwoord..."
+      style="width:100%;padding:.85rem;border:1px solid #333;border-radius:10px;background:#111;color:#fff;font-size:1rem;margin-bottom:1rem;outline:none"
+      onkeydown="if(event.key==='Enter')checkPw()"/>
+    <button onclick="checkPw()"
+      style="width:100%;padding:.85rem;background:#6366f1;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer">
+      Toegang
+    </button>
+    <div style="margin-top:1rem;font-size:.8rem;color:#444">
+      <a href="https://stverstr.github.io" style="color:#6366f1">← Portfolio</a>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+
+<header class="site-header">
+  <div class="site-header__top">
+    <div class="container">
+      <span>Sustainability team · Colruyt Group</span>
+      <span class="text-muted">Voorstel voor de AI Support Group</span>
+    </div>
+  </div>
+  <div class="site-header__main">
+    <div class="container">
+      <a class="site-logo" href="#top">
+        <img src="assets/logo-colruyt-nl.svg" alt="Colruyt Group" />
+      </a>
+      <nav style="margin-left:auto">
+        <ul class="main-nav">
+          <li><a href="#usecases">Use cases</a></li>
+          <li><a href="#guardrails">Guardrails</a></li>
+          <li><a href="#vragen">Onze vraag</a></li>
+          <li><a href="#aanpak">Aanpak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="container" style="margin-top:30px">
+    <section class="hero">
+      <div class="hero__content" style="max-width:760px">
+        <h6>Voorstel · Sustainability team</h6>
+        <h1>AI for Sustainability</h1>
+        <p class="lead">Claude AI inzetten binnen Sustainability: productdata verrijken voor impactanalyses, de Board-applicatie sneller bouwen, en analisten AI-gedreven inzichten geven op Snowflake-data. Eén proeftuin, drie concrete cases, heldere guardrails.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px">
+          <a href="#vragen" class="btn btn--primary btn--lg">Bekijk onze vraag</a>
+          <a href="#usecases" class="btn btn--secondary btn--lg">Ontdek de 3 use cases</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTEXT -->
+  <section class="section">
+    <div class="container container--content">
+      <h2>Waarom nu, en waarom Sustainability?</h2>
+      <p class="lead text-muted">Drie werkvelden binnen ons team lopen vandaag tegen dezelfde muur aan: te veel ruwe data, te weinig tijd, te veel handmatig structureringswerk vóór er ook maar één inzicht uitkomt.</p>
+      <p>We verzamelen, structureren en analyseren vandaag al sustainability-data over klimaat, water en mensenrechten — via Board voor de consolidatie en Snowflake/Power BI voor de analyse. Dat werkt, maar het kost tijd die we liever aan inzicht en impact besteden dan aan datastructurering. Tegelijk botsen we op een harde grens: voor een correcte impactanalyse (CO2, water, mensenrechten) ontbreekt vandaag een groot deel van de brondata — ingrediënten, land van oorsprong, emissie- en waterverbruiksfactoren zijn onvolledig of nergens gestructureerd beschikbaar.</p>
+      <p>We denken dat Claude AI op alle drie deze vlakken een versnelling kan geven — mits de juiste guardrails. Sustainability is bewust een goede plek om dit eerst uit te proberen: een klein, samenhangend team, geen klant- of verkoopsdata in de kernprocessen, en een duidelijk afgebakende scope. Een ideale proeftuin dus, vóór bredere uitrol binnen Colruyt Group.</p>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section id="usecases" class="section section--tint anchor-offset">
+    <div class="container container--content">
+      <h2>Drie concrete use cases</h2>
+      <p class="lead text-muted">Geen abstract experiment — drie afgebakende toepassingen met een directe link naar ons dagelijkse werk.</p>
+
+      <div class="grid grid--3" style="margin-top:30px;align-items:stretch">
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <h6>Use case 1</h6>
+            <h3>Data­verrijking</h3>
+          </div>
+          <p>Vandaag hebben we productdata van alle Colruyt Group-producten, maar te weinig om een volwaardige impactanalyse te maken: ingrediënten, land van oorsprong, CO2-emissiefactoren, waterverbruik ontbreken grotendeels. Claude kan deze productdata helpen aanvullen, zodat we minstens een <em>preliminary impact assessment</em> kunnen maken op klimaat, water en mensenrechten.</p>
+          <div class="notice notice--info" style="margin-top:auto">
+            <strong>Guardrail:</strong> enkel productdata (ingrediënten, verpakking, oorsprong) wordt gedeeld. Verkoops- en volumedata blijven strikt gescheiden en worden nooit aangeboden aan een AI-model.
+          </div>
+        </div>
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div>
+            <h6>Use case 2</h6>
+            <h3>Board — sneller bouwen</h3>
+          </div>
+          <p>We ontwikkelen vandaag onze Sustainability-consolidatieapplicatie in Board, een low-code omgeving. Met AI-ondersteuning bij het ontwikkelwerk zouden we sneller kunnen itereren. Dit is geen bedrijfskritische applicatie voor 1000+ gebruikers of klanten, maar wél cruciaal voor het beheer van onze doelstellingen en de aggregatie/consolidatie van onze cijfers.</p>
+          <div class="notice notice--info" style="margin-top:auto">
+            <strong>Guardrail:</strong> beperkte, interne gebruikersgroep (het Sustainability-ontwikkelteam); geen geconsolideerde bedrijfscijfers als trainings- of promptcontext.
+          </div>
+        </div>
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div>
+            <h6>Use case 3</h6>
+            <h3>Analisten — sneller tot inzicht</h3>
+          </div>
+          <p>Board verzamelt vandaag gestructureerd de data en processen die tot kwalitatieve cijfers leiden; die data gaat naar Snowflake, waar analisten met klassieke tools en Power BI inzichten bouwen per sustainability-thema (klimaat, mensenrechten, water). De vertaalslag van ruwe data naar semantische modellen kost vandaag veel tijd. AI kan op de ruwe data sneller en dieper inzichten vinden én die sneller visualiseren.</p>
+          <div class="notice notice--info" style="margin-top:auto">
+            <strong>Guardrail:</strong> analyse op geaggregeerde sustainability-cijfers binnen Snowflake, binnen de bestaande toegangsrechten van het analistenteam — geen uitbreiding van datatoegang buiten wat vandaag al gebruikt wordt.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GUARDRAILS -->
+  <section id="guardrails" class="section anchor-offset">
+    <div class="container container--content">
+      <h2>Guardrails: wat delen we wel, wat nooit</h2>
+      <p>Het uitgangspunt is eenvoudig: productdata mag gedeeld worden waar dat nodig is voor impactanalyse; alles wat herleidbaar is naar omzet, volumes of klanten blijft strikt buiten scope.</p>
+
+      <div style="overflow-x:auto">
+      <table class="table" style="margin-top:20px">
+        <thead>
+          <tr><th>Categorie</th><th>Voorbeeld</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Productdata</td>
+            <td>Ingrediënten, samenstelling, verpakking, herkomst</td>
+            <td><span class="status-pill" style="background:var(--clr-success)">Wel delen</span></td>
+          </tr>
+          <tr>
+            <td>Referentiedata impact</td>
+            <td>CO2-emissiefactoren, waterverbruiksfactoren per grondstof/regio</td>
+            <td><span class="status-pill" style="background:var(--clr-success)">Wel delen</span></td>
+          </tr>
+          <tr>
+            <td>Geaggregeerde sustainability-cijfers</td>
+            <td>Klimaat-, water- en mensenrechten-KPI's binnen bestaande Snowflake-toegang</td>
+            <td><span class="status-pill" style="background:var(--clr-success)">Wel delen</span></td>
+          </tr>
+          <tr>
+            <td>Verkoops- en volumedata</td>
+            <td>Omzet, aantal verkochte eenheden, prijzen</td>
+            <td><span class="status-pill" style="background:var(--clr-alert)">Nooit delen</span></td>
+          </tr>
+          <tr>
+            <td>Klant- en persoonsgegevens</td>
+            <td>Klantprofielen, aankoopgedrag, loyaltydata</td>
+            <td><span class="status-pill" style="background:var(--clr-alert)">Nooit delen</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <div class="notice notice--warning mt-4">
+        Alle data-uitwisseling verloopt via de door Colruyt Group goedgekeurde AI-omgeving en het bestaande contract met Anthropic — geen losse consumer-tools of persoonlijke accounts.
+      </div>
+    </div>
+  </section>
+
+  <!-- ONZE VRAAG -->
+  <section id="vragen" class="section section--tint anchor-offset">
+    <div class="container container--content">
+      <h2>Onze vraag aan de AI Support Group</h2>
+      <p class="lead text-muted">Geen vraag om een volledig kant-en-klaar platform — wel om samen drie dingen scherp te krijgen.</p>
+
+      <div class="grid grid--3" style="margin-top:30px;align-items:stretch">
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div><h6>Vraag 1</h6><h3>Kan dat?</h3></div>
+          <p>Is het technisch en beleidsmatig haalbaar om Claude in te zetten voor deze drie cases — datastructurering, Board-ontwikkeling en analyse op Snowflake — binnen het bestaande Colruyt Group AI-kader?</p>
+        </div>
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div><h6>Vraag 2</h6><h3>Krijgen we toegang?</h3></div>
+          <p>Kunnen we, binnen de guardrails van deze drie topics en zonder gevoelige data, de nodige toegang krijgen voor het volledige Sustainability-team — niet voor één individuele proefpersoon, maar voor het team dat er dagelijks mee werkt?</p>
+        </div>
+
+        <div class="card usecase-card">
+          <div class="icon-circle">
+            <svg class="ico ico--lg" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div><h6>Vraag 3</h6><h3>Hoe werken we samen?</h3></div>
+          <p>Hoe organiseren we de samenwerking met de juiste mensen binnen AI Support, maar wel dicht bij het Sustainability-team — zodat we snel kunnen itereren zonder de governance uit het oog te verliezen?</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AANPAK -->
+  <section id="aanpak" class="section anchor-offset">
+    <div class="container container--content">
+      <h2>Voorgestelde aanpak: een proeftuin, geen big bang</h2>
+      <p>We stellen voor om dit klein en gecontroleerd te starten, met het Sustainability-team als piloot voor doorgedreven AI-werking binnen Colruyt Group — met AI Support als partner, niet als achteraf-goedkeurder.</p>
+
+      <div class="grid grid--4" style="margin-top:30px;align-items:stretch">
+        <div class="card phase-card">
+          <div class="phase-num">1</div>
+          <h5>Scoping</h5>
+          <p class="p2">Guardrails en databronnen samen met AI Support fijnstellen per use case.</p>
+        </div>
+        <div class="card phase-card">
+          <div class="phase-num">2</div>
+          <h5>Piloot</h5>
+          <p class="p2">Eén use case eerst — data­verrijking op een productcategorie — als bewijs van waarde.</p>
+        </div>
+        <div class="card phase-card">
+          <div class="phase-num">3</div>
+          <h5>Evaluatie</h5>
+          <p class="p2">Resultaat, datakwaliteit en governance samen aftoetsen tegen de guardrails.</p>
+        </div>
+        <div class="card phase-card">
+          <div class="phase-num">4</div>
+          <h5>Opschalen</h5>
+          <p class="p2">Uitbreiden naar Board en analisten, en mogelijks als referentiecase voor andere teams.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:60px">Wie doet wat</h3>
+      <div class="grid grid--3" style="margin-top:20px;align-items:stretch">
+        <div class="card role-card">
+          <h5>Sustainability team</h5>
+          <p class="p2">Eigenaar van de use cases, levert domeinkennis, test en valideert de resultaten in de praktijk.</p>
+        </div>
+        <div class="card role-card">
+          <h5>AI Support Group</h5>
+          <p class="p2">Bewaakt het AI-kader, faciliteert toegang en tooling, en denkt mee over schaalbaarheid buiten de piloot.</p>
+        </div>
+        <div class="card role-card">
+          <h5>Data governance &amp; security</h5>
+          <p class="p2">Valideert de guardrails uit deze pagina en bevestigt dat geen gevoelige data de scope verlaat.</p>
+        </div>
+      </div>
+
+      <div class="banner mt-5">
+        <div>
+          <h2>Laten we dit samen bekijken</h2>
+          <p>We stellen een kort overleg voor met AI Support om deze drie vragen te bespreken en een eerste piloot af te bakenen.</p>
+        </div>
+        <a href="mailto:sustainability@colruytgroup.com?subject=AI%20for%20Sustainability%20-%20kick-off" class="btn btn--secondary" style="background:#fff">Plan een kick-off</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-cards">
+      <div class="footer-card">
+        <h4>De pagina</h4>
+        <ul>
+          <li><a href="#usecases">Use cases</a></li>
+          <li><a href="#guardrails">Guardrails</a></li>
+          <li><a href="#vragen">Onze vraag</a></li>
+        </ul>
+      </div>
+      <div class="footer-card">
+        <h4>Use cases</h4>
+        <ul>
+          <li><a href="#usecases">Data­verrijking</a></li>
+          <li><a href="#usecases">Board</a></li>
+          <li><a href="#usecases">Analisten</a></li>
+        </ul>
+      </div>
+      <div class="footer-card">
+        <h4>Governance</h4>
+        <ul>
+          <li><a href="#guardrails">Wat delen we wel/niet</a></li>
+          <li><a href="#aanpak">Rollen &amp; verantwoordelijkheden</a></li>
+        </ul>
+      </div>
+      <div class="footer-card">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sustainability@colruytgroup.com">Sustainability team</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Sustainability team · voorstel aan AI Support Group</span>
+      <span>Intern werkdocument — geen officiële communicatie</span>
+    </div>
+  </div>
+  <div class="group-bar">Een onderneming van Colruyt Group</div>
+</footer>
+
+</div>
+
+<script>
+const MASTER_HASH = '750db0f147fb55c6755f5b3bb2606a35623b43d03c80056c48587dfa2df45c04';
+async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+async function checkPw(){const h=await sha256(document.getElementById('pwInput').value);if(h===MASTER_HASH){sessionStorage.setItem('auth','1');document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';if(typeof onAppReady==='function')onAppReady();}else{const i=document.getElementById('pwInput');i.style.borderColor='#ef4444';i.value='';setTimeout(()=>i.style.borderColor='#333',600);}}
+window.addEventListener('DOMContentLoaded',()=>{if(sessionStorage.getItem('auth')==='1'){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';if(typeof onAppReady==='function')onAppReady();}});
+</script>
+
+</body>
+</html>
